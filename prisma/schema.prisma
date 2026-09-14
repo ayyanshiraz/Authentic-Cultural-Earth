@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ArtifactType {
+  visual
+}
+
+enum OrderStatus {
+  PROCESSING_FULFILLMENT
+}
+
+model Artifact {
+  id          String       @id @default(cuid())
+  continent   String
+  title       String
+  image       String
+  type        ArtifactType @default(visual)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  customerEmail   String
+  customerPhone   String
+  firstName       String
+  lastName        String
+  address1        String
+  address2        String?
+  city            String
+  state           String
+  zip             String
+  country         String
+  totalAmount     Float
+  status          OrderStatus @default(PROCESSING_FULFILLMENT)
+  items           OrderItem[]
+  createdAt       DateTime    @default(now())
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id])
+  productId String
+  quantity  Int
+  price     Float
+}
