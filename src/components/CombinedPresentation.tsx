@@ -7,21 +7,20 @@ import { Playfair_Display, Outfit } from "next/font/google";
 const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500", "600"] });
 
-// Combined slides from both the artwork and continental presentations
 const unifiedSlides = [
-  { id: 1, title: "ALGERIA — VISUAL", image: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=600" },
-  { id: 2, title: "ALGERIA — DESCRIPTIVE", image: "https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&q=80&w=600" },
-  { id: 3, title: "QATAR — VISUAL", image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&q=80&w=600" },
-  { id: 4, title: "QATAR — DESCRIPTIVE", image: "https://images.unsplash.com/photo-1610977271815-5d9dcbf968c3?auto=format&fit=crop&q=80&w=600" },
-  { id: 5, title: "PERU — VISUAL", image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&q=80&w=600" },
-  { id: 6, title: "PERU — DESCRIPTIVE", image: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&q=80&w=600" },
-  { id: 7, title: "AFRICA — FRONT", image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=80&w=600" },
-  { id: 8, title: "AFRICA — BACK", image: "https://images.unsplash.com/photo-1523805009056-2448a5e5a2db?auto=format&fit=crop&q=80&w=600" },
-  { id: 9, title: "ASIA — FRONT", image: "https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?auto=format&fit=crop&q=80&w=600" },
-  { id: 10, title: "EUROPE — FRONT", image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=600" },
-  { id: 11, title: "NORTH AMERICA — FRONT", image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=600" },
-  { id: 12, title: "SOUTH AMERICA — FRONT", image: "https://images.unsplash.com/photo-1619546952812-520e9806f87d?auto=format&fit=crop&q=80&w=600" },
-  { id: 13, title: "OCEANIA — FRONT", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=600" }
+  { id: 1, title: "ALGERIA — VISUAL", image: "" },
+  { id: 2, title: "ALGERIA — DESCRIPTIVE", image: "" },
+  { id: 3, title: "QATAR — VISUAL", image: "" },
+  { id: 4, title: "QATAR — DESCRIPTIVE", image: "" },
+  { id: 5, title: "PERU — VISUAL", image: "" },
+  { id: 6, title: "PERU — DESCRIPTIVE", image: "" },
+  { id: 7, title: "AFRICA — FRONT", image: "" },
+  { id: 8, title: "AFRICA — BACK", image: "" },
+  { id: 9, title: "ASIA — FRONT", image: "" },
+  { id: 10, title: "EUROPE — FRONT", image: "" },
+  { id: 11, title: "NORTH AMERICA — FRONT", image: "" },
+  { id: 12, title: "SOUTH AMERICA — FRONT", image: "" },
+  { id: 13, title: "OCEANIA — FRONT", image: "" }
 ];
 
 export default function CombinedPresentation() {
@@ -85,7 +84,7 @@ export default function CombinedPresentation() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              className={`${outfit.className} inline-block px-8 py-3 border border-black text-xs font-semibold uppercase tracking-widest text-black hover:bg-black hover:text-white transition-all duration-300 rounded-full`}
+              className={`${outfit.className} inline-block px-8 py-3 border border-black text-xs font-semibold uppercase tracking-widest text-black hover:bg-black hover:text-white active:bg-black active:text-white transition-all duration-300 rounded-full`}
             >
               See all collection
             </motion.a>
@@ -112,7 +111,7 @@ export default function CombinedPresentation() {
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .animate-scroll { animation: scroll 60s linear infinite; }
-        .animate-scroll:hover { animation-play-state: paused; cursor: pointer; }
+        .animate-scroll:hover, .animate-scroll:active { animation-play-state: paused; cursor: pointer; }
         @keyframes scroll {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-50%); }

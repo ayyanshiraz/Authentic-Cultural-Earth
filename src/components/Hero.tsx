@@ -62,9 +62,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }} 
             className="pt-4 pointer-events-auto"
           >
-            <button className={`${outfit.className} bg-white hover:bg-gray-200 text-black rounded-full px-8 py-4 font-semibold text-sm md:text-base flex items-center justify-center gap-3 transition-transform hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)]`}>
-              Explore the Complete Collection
-            </button>
+            <button onClick={() => { window.location.href = `/collection`; }} className={`${outfit.className} bg-white hover:bg-gray-200 text-black rounded-full px-8 py-4 font-semibold text-sm md:text-base flex items-center justify-center gap-3 transition-transform hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)]`}>
+  Explore the Complete Collection
+</button>
           </motion.div>
           
         </div>

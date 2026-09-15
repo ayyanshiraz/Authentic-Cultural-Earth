@@ -18,28 +18,13 @@ const continentsData = [
   { id: "oceania", title: "Oceania", color: "#a855f7", glow: "rgba(168, 85, 247, 0.15)", desc: "Island cultures, indigenous knowledge, oceanic identity and distinctive environments.", cardCount: "13 CARDS", countNum: 13 }
 ];
 
-// Helper to generate the exact required count of cards per continent with distinct front & back images
 const generateContinentSlides = (continentId: string, count: number) => {
-  const images = [
-    "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1610977271815-5d9dcbf968c3?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=600"
-  ];
-
   return Array.from({ length: count }, (_, index) => ({
     id: `${continentId}-card-${index + 1}`,
     continent: continentId,
     title: `${continentId.toUpperCase()} — CARD ${index + 1}`,
-    frontImage: images[index % images.length],
-    backImage: images[(index + 1) % images.length]
+    frontImage: "",
+    backImage: ""
   }));
 };
 
@@ -82,10 +67,11 @@ const ContinentCard = ({
       onClick={onClick}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       className="w-full bg-[#0a0a0a] rounded-3xl border border-black/10 shadow-2xl cursor-pointer flex flex-col md:flex-row p-6 md:p-8 gap-8 group transition-all duration-500 relative overflow-hidden perspective-[1000px]"
     >
       <motion.div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-700 pointer-events-none"
         style={{ background: `radial-gradient(circle at 50% 0%, ${data.glow}, transparent 70%)` }}
       />
       <div className="w-full md:w-1/2 h-[240px] md:h-[300px] relative flex items-center justify-center" style={{ transformStyle: "preserve-3d" }}>
@@ -102,9 +88,9 @@ const ContinentCard = ({
           className="absolute bottom-0 left-4 md:left-8 w-2/5 aspect-[2.5/3.5] bg-neutral-800 rounded-md shadow-[20px_20px_30px_rgba(0,0,0,0.8)] border border-white/20 overflow-hidden z-10"
         >
           <img 
-            src={`https://images.unsplash.com/photo-${data.id === "africa" ? "1516026672322-bc52d61a55d5" : "1531206715517-5c0ba140b2b8"}?auto=format&fit=crop&q=80&w=400`} 
+            src="" 
             alt="Sample" 
-            className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
+            className="w-full h-full object-cover scale-110 group-hover:scale-100 group-active:scale-100 transition-transform duration-700"
           />
         </motion.div>
       </div>
@@ -120,7 +106,7 @@ const ContinentCard = ({
         </p>
         <button 
           style={{ borderColor: data.color }}
-          className={`${outfit.className} self-start border bg-transparent text-white text-xs uppercase tracking-widest font-medium px-6 py-3 rounded-full transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:border-white`}
+          className={`${outfit.className} self-start border bg-transparent text-white text-xs uppercase tracking-widest font-medium px-6 py-3 rounded-full transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:border-white group-active:bg-white group-active:text-black group-active:border-white`}
         >
           Explore {data.title}
         </button>
@@ -154,14 +140,13 @@ const GalleryItem = ({ slide, index }: { slide: any, index: number }) => {
         style={{ transformStyle: "preserve-3d" }}
         onClick={() => setIsFlipped(!isFlipped)}
       >
-        {/* Front Face */}
         <div 
           className="absolute inset-0 w-full h-full bg-black/5 backdrop-blur-xl rounded-2xl p-2 shadow-xl border border-black/10 overflow-hidden group"
           style={{ backfaceVisibility: "hidden" }}
         >
           <div className="w-full h-full rounded-xl overflow-hidden relative bg-black">
-            <img src={slide.frontImage} alt={slide.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+            <img src={slide.frontImage} alt={slide.title} className="w-full h-full object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100 group-active:opacity-100" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 flex items-end p-5">
               <span className={`${outfit.className} text-[10px] tracking-[0.2em] text-white uppercase font-semibold`}>
                 {slide.title} (FRONT)
               </span>
@@ -169,14 +154,13 @@ const GalleryItem = ({ slide, index }: { slide: any, index: number }) => {
           </div>
         </div>
 
-        {/* Back Face */}
         <div 
           className="absolute inset-0 w-full h-full bg-black/5 backdrop-blur-xl rounded-2xl p-2 shadow-xl border border-black/10 overflow-hidden group"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
           <div className="w-full h-full rounded-xl overflow-hidden relative bg-black">
-            <img src={slide.backImage} alt={`${slide.title} Back`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+            <img src={slide.backImage} alt={`${slide.title} Back`} className="w-full h-full object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100 group-active:opacity-100" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 flex items-end p-5">
               <span className={`${outfit.className} text-[10px] tracking-[0.2em] text-white uppercase font-semibold`}>
                 {slide.title} (BACK)
               </span>
@@ -250,7 +234,7 @@ export default function CollectionClient() {
             className={`${outfit.className} px-6 py-2.5 text-xs tracking-widest uppercase transition-all duration-300 border ${
               activeContinent === null 
                 ? "bg-black text-white border-black shadow-[0_5px_20px_rgba(0,0,0,0.2)]" 
-                : "bg-transparent text-black/70 border-black/20 hover:border-black/50 hover:text-black"
+                : "bg-transparent text-black/70 border-black/20 hover:border-black/50 hover:text-black active:border-black/50 active:text-black"
             }`}
           >
             All
@@ -269,7 +253,7 @@ export default function CollectionClient() {
                   boxShadow: isActive ? `0 5px 20px ${continent.color}60` : "none"
                 }}
                 className={`${outfit.className} px-6 py-2.5 text-xs tracking-widest uppercase transition-all duration-300 border ${
-                  !isActive ? "text-black/70 border-black/20 hover:border-black/50 hover:text-black" : ""
+                  !isActive ? "text-black/70 border-black/20 hover:border-black/50 hover:text-black active:border-black/50 active:text-black" : ""
                 }`}
               >
                 {continent.title}
@@ -292,7 +276,6 @@ export default function CollectionClient() {
                 className="flex flex-col gap-16"
               >
                 
-                {/* Direction Guide Section */}
                 <div className="flex flex-col lg:flex-row gap-12 items-center bg-[#fbfaf8] p-8 md:p-12 rounded-3xl border border-black/5 shadow-sm">
                   <div className="w-full lg:w-1/3 flex flex-col space-y-6">
                     <span className={`${outfit.className} text-[10px] md:text-xs text-black/50 uppercase tracking-[0.3em] font-semibold`}>
@@ -325,7 +308,6 @@ export default function CollectionClient() {
                   </div>
                 </div>
 
-                {/* Grid Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                   {continentsData.map((continent) => (
                     <ContinentCard 

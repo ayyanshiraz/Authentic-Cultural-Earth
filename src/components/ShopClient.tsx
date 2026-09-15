@@ -68,7 +68,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
                 <img
                   src={product.heroImage}
                   alt={product.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-[1.5s]"
+                  className="w-full h-full object-cover hover:scale-105 active:scale-105 transition-transform duration-[1.5s]"
                 />
               </motion.div>
 
@@ -95,7 +95,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
                   <div className="w-full h-px bg-black/10 hidden lg:block" />
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className={`${outfit.className} w-full lg:w-auto border border-black text-black hover:bg-black hover:text-white px-10 py-4 text-xs font-bold uppercase tracking-[0.3em] transition-colors cursor-pointer`}
+                    className={`${outfit.className} w-full lg:w-auto border border-black text-black hover:bg-black hover:text-white active:bg-black active:text-white px-10 py-4 text-xs font-bold uppercase tracking-[0.3em] transition-colors cursor-pointer`}
                   >
                     {addedId === product.id ? "ADDED TO CART" : "ACQUIRE NOW"}
                   </button>

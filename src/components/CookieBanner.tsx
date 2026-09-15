@@ -34,7 +34,7 @@ export default function CookieBanner() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-[950px]"
       >
-        <div className={`${outfit.className} bg-[#e5e5e5] text-black rounded-full px-5 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4 shadow-[0_25px_60px_rgba(0,0,0,0.5)] border border-white/80 backdrop-blur-2xl`}>
+        <div className={`${outfit.className} bg-[#e5e5e5] text-black rounded-[24px] md:rounded-full p-4 md:px-5 md:py-3.5 flex flex-col md:flex-row items-center justify-between gap-4 shadow-[0_25px_60px_rgba(0,0,0,0.5)] border border-white/80 backdrop-blur-2xl`}>
           
           <div className="flex items-center gap-4 w-full md:w-auto justify-start">
             <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm shrink-0">
@@ -52,7 +52,7 @@ export default function CookieBanner() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 w-full md:w-auto justify-end shrink-0">
+          <div className="flex items-center gap-3 w-full md:w-auto justify-center md:justify-end shrink-0">
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}

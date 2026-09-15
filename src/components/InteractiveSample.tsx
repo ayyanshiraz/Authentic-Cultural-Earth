@@ -10,33 +10,33 @@ const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500", "600"]
 const sampleData = [
   {
     name: "Algeria",
-    front: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=800",
-    back: "https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&q=80&w=800"
+    front: "",
+    back: ""
   },
   {
     name: "Qatar",
-    front: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&q=80&w=800",
-    back: "https://images.unsplash.com/photo-1610977271815-5d9dcbf968c3?auto=format&fit=crop&q=80&w=800"
+    front: "",
+    back: ""
   },
   {
     name: "Monaco",
-    front: "https://images.unsplash.com/photo-1520617309995-1e0e7a256df2?auto=format&fit=crop&q=80&w=800",
-    back: "https://images.unsplash.com/photo-1555519323-958b9f168fbc?auto=format&fit=crop&q=80&w=800"
+    front: "",
+    back: ""
   },
   {
     name: "Saint Kitts & Nevis",
-    front: "https://images.unsplash.com/photo-1588612196628-98e3881ae619?auto=format&fit=crop&q=80&w=800",
-    back: "https://images.unsplash.com/photo-1590480370617-66a988dcc9a3?auto=format&fit=crop&q=80&w=800"
+    front: "",
+    back: ""
   },
   {
     name: "Peru",
-    front: "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&q=80&w=800",
-    back: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&q=80&w=800"
+    front: "",
+    back: ""
   },
   {
     name: "New Zealand",
-    front: "https://images.unsplash.com/photo-1469522859132-e56525164bc7?auto=format&fit=crop&q=80&w=800",
-    back: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&q=80&w=800"
+    front: "",
+    back: ""
   }
 ];
 
@@ -186,7 +186,7 @@ export default function InteractiveSample() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsFlipped(!isFlipped)}
-              className={`${outfit.className} mt-12 px-8 py-3 border border-[#050505] text-xs font-semibold uppercase tracking-widest text-[#050505] hover:bg-[#050505] hover:text-white transition-all duration-300 rounded-full`}
+              className={`${outfit.className} mt-12 px-8 py-3 border border-[#050505] text-xs font-semibold uppercase tracking-widest text-[#050505] hover:bg-[#050505] hover:text-white active:bg-[#050505] active:text-white transition-all duration-300 rounded-full`}
             >
               Flip card
             </motion.button>
@@ -212,7 +212,7 @@ export default function InteractiveSample() {
                   <button
                     key={country.name}
                     onClick={() => handleCountryChange(country)}
-                    className={`${outfit.className} relative px-6 py-2.5 text-sm rounded-full transition-colors duration-300 z-10 overflow-hidden ${isActive ? "text-white" : "text-[#050505] border border-[#050505]/10 hover:border-[#050505]/30 hover:bg-black/5"}`}
+                    className={`${outfit.className} relative px-6 py-2.5 text-sm rounded-full transition-colors duration-300 z-10 overflow-hidden ${isActive ? "text-white" : "text-[#050505] border border-[#050505]/10 hover:border-[#050505]/30 hover:bg-black/5 active:border-[#050505]/30 active:bg-black/5"}`}
                   >
                     {isActive && (
                       <motion.div

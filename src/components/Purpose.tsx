@@ -32,8 +32,8 @@ export default function Purpose() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="purpose" className="bg-white text-black py-32 w-full relative z-20">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+    <section id="purpose" className="bg-white text-black py-16 w-full relative z-20">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-8 md:gap-16 lg:gap-24 items-start">
         
         {/* Sticky Header Section */}
         <div className="w-full lg:w-5/12 lg:sticky lg:top-40 flex flex-col space-y-6">
@@ -58,7 +58,7 @@ export default function Purpose() {
         </div>
 
         {/* Interactive List Section */}
-        <div className="w-full lg:w-7/12 flex flex-col border-t border-black/10 mt-12 lg:mt-0">
+        <div className="w-full lg:w-7/12 flex flex-col border-t border-black/10 mt-4 md:mt-12 lg:mt-0">
           {purposeData.map((item, index) => {
             const isHovered = hoveredIndex === index;
             const isDimmed = hoveredIndex !== null && hoveredIndex !== index;
@@ -68,6 +68,8 @@ export default function Purpose() {
                 key={item.id}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
+                onTouchStart={() => setHoveredIndex(index)}
+                onTouchEnd={() => setHoveredIndex(null)}
                 animate={{ opacity: isDimmed ? 0.25 : 1 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="group border-b border-black/10 py-12 md:py-16 cursor-pointer relative overflow-hidden flex flex-col md:flex-row gap-6 md:gap-12 items-start"
