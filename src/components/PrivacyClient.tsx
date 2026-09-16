@@ -39,7 +39,7 @@ export default function PrivacyClient() {
         }}
       />
 
-      <div className="w-full flex flex-col items-center justify-center text-center px-6 pt-24 pb-12 relative z-10">
+      <div className="w-full flex flex-col items-center justify-center text-center px-6 pt-35 pb-12 relative z-10">
         <motion.p 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
