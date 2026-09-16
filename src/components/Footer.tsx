@@ -63,11 +63,25 @@ export default function Footer() {
     mouseY.set(e.clientY - rect.top);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      setSubscribed(true);
-      setEmail("");
+      try {
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
+        
+        if (res.ok) {
+          setSubscribed(true);
+          setEmail("");
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
