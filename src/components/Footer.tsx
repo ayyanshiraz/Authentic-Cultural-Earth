@@ -53,9 +53,6 @@ export default function Footer() {
   const spotlightX = useSpring(mouseX, { stiffness: 40, damping: 20 });
   const spotlightY = useSpring(mouseY, { stiffness: 40, damping: 20 });
 
-  const logoRotateX = useTransform(spotlightY, [0, 800], [15, -15]);
-  const logoRotateY = useTransform(spotlightX, [0, 1400], [-15, 15]);
-
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
@@ -109,12 +106,12 @@ export default function Footer() {
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16 mb-24">
         
-        <div className="lg:col-span-4 flex flex-col items-start space-y-8 perspective-[1000px]">
-          <motion.div style={{ rotateX: logoRotateX, rotateY: logoRotateY, transformStyle: "preserve-3d" }}>
+        <div className="lg:col-span-4 flex flex-col items-start space-y-8">
+          <div>
             <Link href="/" className="inline-block origin-center">
               <img src="" alt="Authentic Cultural Earth Logo" className="h-12 w-auto object-contain" />
             </Link>
-          </motion.div>
+          </div>
           <div className="space-y-3">
             <h3 className={`${outfit.className} text-xs uppercase tracking-[0.5em] font-semibold text-white/90`}>
               Authentic Cultural Earth
